@@ -182,9 +182,9 @@ char* AWSClient4::createRequest(MinimalString &reqPayload) {
     // @TODO: find out why sprintf doesn't work
     const char* dateTime = dateTimeProvider->getDateTime();
     strncpy(awsDate, dateTime, 8);
-    awsDate[9] = '\0';
+    awsDate[AWS_DATE_LEN4] = '\0';
     strncpy(awsTime, dateTime + 8, 6);
-    awsTime[7] = '\0';
+    awsTime[AWS_TIME_LEN4] = '\0';
 
     SHA256* sha256 = new SHA256();
     payloadHash = (*sha256)(reqPayload.getCStr(), reqPayload.length());
